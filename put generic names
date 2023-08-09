@@ -1,5 +1,3 @@
-
-
 "Given a list of detailed product specifications, provide a simple, generic name for each feature. These names should be broad and easy to understand. If any features are repeated or very similar, remove the duplicates. For instance, if presented with '4.7-inch LED-backlit display with IPS technology,' the generic name might be 'Display.' Name the following product specifications generically and ensure no duplicates:"
 
 [Your list of specifications here]
