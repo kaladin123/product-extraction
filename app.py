@@ -5,10 +5,6 @@ from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
 import re
 
-# Assuming you've installed nltk and downloaded the necessary resources
-# nltk.download('punkt')
-# nltk.download('stopwords')
-
 # Load the Excel data
 df = pd.read_excel('path_to_your_file.xlsx')
 
@@ -47,18 +43,17 @@ def remove_stopwords(tokens):
 # Function for stemming
 def stem(tokens):
     stemmer = PorterStemmer()
-    return [stemmer.stem(token) for token in tokens]
+    return ' '.join([stemmer.stem(token) for token in tokens])
 
 # Apply preprocessing
 df['Cleaned_Description'] = df['English Description (en-US)'].apply(clean_data)
 df['Normalized_Description'] = df['Cleaned_Description'].apply(normalize)
 df['Tokens'] = df['Normalized_Description'].apply(tokenize)
 df['Tokens_No_Stopwords'] = df['Tokens'].apply(remove_stopwords)
-df['Stemmed_Tokens'] = df['Tokens_No_Stopwords'].apply(stem)
+df['Stemmed_Text'] = df['Tokens_No_Stopwords'].apply(stem)
 
-# Optional: Feature engineering example - computing the length of descriptions
-df['Description_Length'] = df['English Description (en-US)'].apply(len)
+# Retain only the required columns
+df = df[['Product ID', 'English Name (en-US)', 'Stemmed_Text', 'Tax Suggested Category']]
 
 # Save or further process your preprocessed data
 print(df.head())
-
