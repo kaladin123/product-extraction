@@ -1,8 +1,10 @@
 
-Given a list of product names, identify and list the shared specifications or common features present in these names. These specifications could include terms that describe the product's size, type, material, function, or any other characteristic that helps distinguish one product from another. Extract these specifications to create a structured comparison.
+
+Given a list of product names, identify potential specifications or general features that might be associated with each product based on common industry knowledge and standards. This means drawing from common attributes that products of a similar type typically possess. For example, for a 'smartphone,' potential specifications might include 'screen size,' 'battery capacity,' 'camera resolution,' etc.
 
 **Input:**
 - List of product names.
 
 **Expected Output:**
-- List of shared product specifications.
+- For each product name, a list of potential general specifications or features that are typically associated with products of that type.
+
