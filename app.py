@@ -5,55 +5,53 @@ from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
 import re
 
-# Load the Excel data
-df = pd.read_excel('path_to_your_file.xlsx')
-
-# Function for cleaning the data
-def clean_data(text):
-    # Remove HTML tags
-    text = re.sub(r'<.*?>', '', text)
+class ProductPreprocessor:
+    def __init__(self, filename):
+        self.filename = filename
+        self.df = pd.read_excel(self.filename)
+        self._initialize_nltk_resources()
+        
+    @staticmethod
+    def _initialize_nltk_resources():
+        try:
+            nltk.data.find('tokenizers/punkt')
+            nltk.data.find('corpora/stopwords')
+        except LookupError:
+            nltk.download('punkt')
+            nltk.download('stopwords')
     
-    # Remove URLs
-    text = re.sub(r'http\S+', '', text)
-    
-    # Correct common typos or domain-specific ones (this is just a dummy example)
-    text = text.replace('exmaple', 'example')
-    
-    return text
+    def clean_data(self, text):
+        text = re.sub(r'<.*?>', '', text)
+        text = re.sub(r'http\S+', '', text)
+        text = text.replace('exmaple', 'example')  # Dummy typo correction, modify as needed
+        return text
 
-# Function for tokenization
-def tokenize(text):
-    return word_tokenize(text)
+    def tokenize(self, text):
+        return word_tokenize(text)
 
-# Function for normalization
-def normalize(text):
-    # Convert to lowercase
-    text = text.lower()
-    
-    # Remove punctuation
-    text = re.sub(r'[^\w\s]', '', text)
-    
-    return text
+    def normalize(self, text):
+        text = text.lower()
+        text = re.sub(r'[^\w\s]', '', text)
+        return text
 
-# Function for removing stopwords
-def remove_stopwords(tokens):
-    stop_words = set(stopwords.words('english'))
-    return [word for word in tokens if word not in stop_words]
+    def remove_stopwords(self, tokens):
+        stop_words = set(stopwords.words('english'))
+        return [word for word in tokens if word not in stop_words]
 
-# Function for stemming
-def stem(tokens):
-    stemmer = PorterStemmer()
-    return ' '.join([stemmer.stem(token) for token in tokens])
+    def stem(self, tokens):
+        stemmer = PorterStemmer()
+        return ' '.join([stemmer.stem(token) for token in tokens])
 
-# Apply preprocessing
-df['Cleaned_Description'] = df['English Description (en-US)'].apply(clean_data)
-df['Normalized_Description'] = df['Cleaned_Description'].apply(normalize)
-df['Tokens'] = df['Normalized_Description'].apply(tokenize)
-df['Tokens_No_Stopwords'] = df['Tokens'].apply(remove_stopwords)
-df['Stemmed_Text'] = df['Tokens_No_Stopwords'].apply(stem)
+    def preprocess(self):
+        self.df['Cleaned_Description'] = self.df['English Description (en-US)'].apply(self.clean_data)
+        self.df['Normalized_Description'] = self.df['Cleaned_Description'].apply(self.normalize)
+        self.df['Tokens'] = self.df['Normalized_Description'].apply(self.tokenize)
+        self.df['Tokens_No_Stopwords'] = self.df['Tokens'].apply(self.remove_stopwords)
+        self.df['Stemmed_Text'] = self.df['Tokens_No_Stopwords'].apply(self.stem)
+        self.df = self.df[['Product ID', 'English Name (en-US)', 'Stemmed_Text', 'Tax Suggested Category']]
+        return self.df
 
-# Retain only the required columns
-df = df[['Product ID', 'English Name (en-US)', 'Stemmed_Text', 'Tax Suggested Category']]
-
-# Save or further process your preprocessed data
-print(df.head())
+# Usage
+preprocessor = ProductPreprocessor('path_to_your_file.xlsx')
+processed_df = preprocessor.preprocess()
+print(processed_df.head())
