@@ -1,0 +1,35 @@
+
+
+**Task**:
+Given a list of technological features, categorize each feature into its respective overarching category. The goal is to map every feature to a broad category that best encapsulates its function or type. Present your findings in the form of a dictionary. In this dictionary, each broad category will serve as a key, and the corresponding features will be its values.
+
+**Input**:
+
+List of Features: [feature1, feature2, feature3, feature4,...]
+
+**Example Input and Output**:
+
+*Input*:
+
+List of Features: 
+- 'Retina Display',
+- 'Super AMOLED',
+- 'Quick Charge',
+- 'Night Sight',
+- 'NPU',
+- 'Slo-mo',
+- 'IP68 Water and Dust Resistance'
+
+*Expected Output*:
+
+{
+    "Display Technology": ["Retina Display", "Super AMOLED"],
+    "Charging Features": ["Quick Charge"],
+    "Camera Capabilities": ["Night Sight"],
+    "AI Components": ["NPU"],
+    "Video Features": ["Slo-mo"],
+    "Durability": ["IP68 Water and Dust Resistance"],
+}
+
+Note: The example provided is for illustrative purposes. Features and their categorizations may vary based on the given list.
+
