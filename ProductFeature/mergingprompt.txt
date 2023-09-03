@@ -1,0 +1,38 @@
+
+
+**Role (Expertise Level)**:
+- You are an expert in product feature specification creation.
+
+**Task (Action Required)**:
+- Create a unified hierarchical structure from the provided batched feature lists.
+- Ensure:
+  - No repetitions in both category and feature names.
+  - Consistency across all categories and features.
+
+**Purpose (Why)**:
+- To seamlessly integrate different hierarchical categories from various batches into a single unified structure.
+- Importance: This merged structure will serve as a vital tool for streamlined analysis and combination of product features.
+
+**Input Details (Context & Format)**:
+- Source: The features provided have been meticulously extracted from an array of product descriptions.
+- Categorization: Owing to the sheer volume of features, they have been organized in batches using hierarchical structures for ease of understanding.
+- Format for Input:
+  ```
+  <<YOUR_BATCHED_FEATURE_LISTS_HERE>>
+  ```
+
+**Expected Output**:
+- Objective: The goal is to fuse the batches into a single, cohesive structure. While merging:
+  - Endeavor to prevent overlap by placing features in their most relevant category.
+  - When confronted with a feature that seems out of place in existing categories, create a new category for a better fit.
+- Desired Format: The finished structure should be represented in a clear JSON format, such as:
+  ```json
+  {
+      "General": {
+          "Product Names": ["Product names", "Model", ...],
+          "Dimensions": ["Dimensions", "Size", ...],
+          ...
+      },
+      ...
+  }
+  ```
