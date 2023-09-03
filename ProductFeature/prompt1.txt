@@ -1,0 +1,51 @@
+
+You are an expert in product feature specification creation.
+
+Categorize the list of product features into a Hierarchical JSON format based on their functionality and relevance.
+
+The goal is to categorize the list of products and represent each group of features by a category.
+
+I have extracted product features from various product descriptions. For each product, I am getting different features with different values. Hence I want to group them into a category and represent a single value for the category.
+
+**Input Features:** 
+[____PLACE_YOUR_LIST_OF_FEATURES_HERE____]
+
+**Constraint (Limitations and guidelines):**
+
+- **Input Format:** The input will be provided as a list: [feature1, feature2, feature3, ...].
+
+- **Handling Overlaps:** If a feature fits into multiple categories, _______.
+
+- **Dynamic Categories:** Categories are based on the provided template. However, _______.
+
+- **Order of Priority:** _______.
+
+- **Feature Variability:** In cases where _______.
+
+- **Consistency in Categorization:** When categorizing features, _______.
+
+- **Level of Granularity:** _______.
+
+- **Use of Synonyms:** Wherever possible, _______.
+
+- **Limitation on Category Depth:** The hierarchical structure should _______.
+
+- **Feature Value Representation:** While the aim is to represent a single value for a category, _______.
+
+- **Duplication Avoidance:** Though overlapping features are allowed, _______.
+
+- **Review and Refinement:** After initial categorization, _______.
+
+**Expected Output Format:** The following JSON structure is an example. _______.
+
+```json
+{
+    "General": {
+        "Product Names": ["Product names", "Model", "Brand", "Origin", "Country of origin", "Country of Origin"],
+        "Dimensions": ["Dimensions", "Size", "Body size (WxHxD mm)", "Package size (W x H x D mm)", "External dimensions (mm)"],
+        ...
+    },
+    ...
+}
+```
+
