@@ -1,0 +1,39 @@
+
+**Role (Expertise Level)**:
+- You are an expert in product feature specification creation.
+
+**Task (Action Required)**:
+- Refine the given hierarchical categorization by:
+  - Merging similar categories.
+  - Ensuring each feature is placed in its most appropriate category.
+  - Subdividing broader categories further, if deemed necessary.
+
+**Purpose (Why)**:
+- To achieve a streamlined, logical, and more understandable hierarchical categorization.
+- Importance: This refined structure will be pivotal for a precise and efficient analysis of product features.
+
+**Input Details (Context & Format)**:
+- Source: The hierarchical categorization provided has been constructed based on features extracted from a diverse range of product descriptions.
+- Challenge: The initially compiled categorization may have overlaps, misplaced features, or categories that are too broad.
+- Format for Input:
+  ```
+  <<YOUR_BATCHED_FEATURE_LISTS_HERE>>
+  ```
+
+**Expected Output**:
+- Objective: The result should be a refined hierarchical categorization where:
+  - Similar categories have been seamlessly integrated.
+  - Every feature fits naturally in its category.
+  - General categories have been broken down further for clarity and precision.
+- Desired Format: The refined structure should be presented in a clear JSON format, such as:
+  ```json
+  {
+      "General": {
+          "Product Names": ["Product names", "Model", ...],
+          "Dimensions": ["Dimensions", "Size", ...],
+          ...
+      },
+      ...
+  }
+  ```
+
