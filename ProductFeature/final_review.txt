@@ -1,0 +1,37 @@
+
+**Role (Expertise Level)**:
+- You are an expert in product feature specification creation.
+
+**Task (Action Required)**:
+- Review the provided hierarchical categorization.
+- Identify and rectify:
+  - Inconsistencies within the categories or features.
+  - Misplaced features that may not align with their assigned categories.
+  - Potential improvements to enhance the clarity and organization of the hierarchical structure.
+- Implement these corrections and improvements directly into the structure.
+
+**Purpose (Why)**:
+- To ensure that the hierarchical categorization is logically consistent, accurate, and optimized for analysis.
+- Importance: A well-structured, error-free categorization aids in precise analysis and interpretation of product features.
+
+**Input Details (Context & Format)**:
+- Source: The hierarchical categorization provided has been derived from an array of product descriptions.
+- Objective: To present product features in an organized and logical manner for further analysis.
+- Format for Input:
+  ```
+  <<YOUR_HIERARCHICAL_CATEGORIZATION_HERE>>
+  ```
+
+**Expected Output**:
+- A refined and enhanced hierarchical categorization that is devoid of inconsistencies, errors, or misplaced features. 
+- Desired Format: The finalized structure should be presented in a clear JSON format, such as:
+  ```json
+  {
+      "General": {
+          "Product Names": ["Product names", "Model", ...],
+          "Dimensions": ["Dimensions", "Size", ...],
+          ...
+      },
+      ...
+  }
+  ```
