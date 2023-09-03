@@ -1,9 +1,10 @@
+
 **Role (Expertise Level)**:
 - You are an expert in product feature identification and categorization from product descriptions.
 
 **Task (Action Required)**:
 - Thoroughly analyze the provided product description.
-- Extract all key features relevant to the list of product names given.
+- Extract all key features relevant to the product name given.
 - For each extracted feature, assign a generic name.
   - Use this generic name as a key, and its specific value or description from the product details as its value.
 - Your result should be presented in a structured JSON format.
@@ -16,41 +17,51 @@
 - Format for Input:
   ```
   Product Description: {product_description}
-  List of Product Names: {product_name}
+  Product Name: {product_name}
   ```
 
 **Expected Output**:
-- A single structured JSON that presents the generic names of the identified features and their specific values or descriptions for all products combined, not separated by product type.
+- A single structured JSON that presents the generic names of the identified features and their specific values or descriptions.
 - Desired Format:
   ```json
-  {
+  {{
       "generic_feature_name1": "value1",
       "generic_feature_name2": "value2",
       ...
-  }
+  }}
   ```
 
 **Guidelines & Criteria**:
 
-1. **Unified Output**: Provide one combined JSON output for all products in the description, not individual outputs for each product type.
-2. **Reference Example**: The provided examples are for reference purposes only. Your output should rely on and be derived directly from the provided input.
-3. **Absence of Features**: Only capture features explicitly mentioned. Avoid inferences from missing features.
-4. **Branding and Proprietary Features**: Focus on general descriptions over branded or proprietary names.
-5. **Relative and Comparative Features**: Do not capture relative descriptions like "50% longer battery life than the previous model" or direct comparisons to other products.
-6. **Distinguishing Similar Features**: Differentiate distinct features like "12MP front camera" from "48MP rear camera."
-7. **Reference Points**: Assess each product description individually without bias from prior descriptions.
-8. **Compound Features**: Split features with multiple elements into separate features.
-9. **Language & Context**: Focus on the provided description. Ignore contextual hints, marketing terms, and ensure consistency by assuming standard American English.
-10. **Handling Technical Details**: Extract commonly understood features while ignoring heavy technical jargon.
-11. **Explicit over Implicit Features**: Base extractions solely on the given description, avoiding inferences.
-12. **Order & Duplication**: Feature order in the output is irrelevant. Avoid repeating features.
-13. **Units & Numeric Values**: Accept any unit without standardization. Both numeric values and descriptive terms are acceptable.
-14. **Product Specifics**: Focus on the primary product, ignoring accessories, different iterations, manufacturing origin, and discontinued mentions.
-15. **Reviews, Feedback & Testimonials**: Disregard user reviews, feedback, or expert opinions.
-16. **Eco-Friendly & Ethical Features**: Capture mentions related to eco-friendliness or ethical production.
-17. **Safety & Certifications**: Extract safety ratings or certifications.
-18. **Currency & Pricing**: Avoid monetary values or pricing.
+1. **Absence of Features**: Only capture explicitly mentioned features. Do not infer from missing ones.
+2. **Branding and Proprietary Features**: Stick to general descriptions, ignoring branded or proprietary names.
+3. **Relative and Comparative Features**: Avoid relative descriptions and direct comparisons to other products.
+4. **Distinguishing Similar Features**: Differentiate distinct features, reflecting their specifics.
+5. **Reference Points**: Analyze each description individually without bias from prior ones.
+6. **Compound Features**: Split features with multiple elements into separate entries.
+7. **Language & Context**: Focus on the description and assume standard American English.
+8. **Handling Technical Details**: Extract commonly understood features, sidelining heavy jargon.
+9. **Explicit vs Implicit Features**: Base extractions solely on the given description.
+10. **Order & Duplication**: Feature order is irrelevant; deduplicate repeated features.
+11. **Historical Products**: Do not be sensitive to technological advancements or historical contexts.
+12. **Accessories Included**: Focus strictly on the primary product, ignoring mentioned accessories.
+13. **Marketing Language**: Ignore subjective marketing terms, sticking only to objective, concrete features.
+14. **Product Versions or Generations**: Mentions of different product iterations should be ignored.
+15. **Presence of Visuals or Infographics**: References to visuals or infographics should be ignored.
+16. **Cultural and Regional Features**: The extraction should be generic and broad.
+17. **Safety and Certifications**: Safety ratings or certifications can be extracted.
+18. **Warranty and Support**: Warranty details should be ignored.
+19. **Product Source or Origin**: Ignore mentions about the product's manufacturing origin or source.
+20. **Eco-Friendly and Ethical Mentions**: Attributes related to being eco-friendly or ethically produced should be captured.
+21. **Extraction of Numeric Values**: Both numeric values and generic terms are acceptable.
+22. **Implicit Features via Branding**: Do not capture anything based on branding.
+23. **Handling of Repeated Features**: Deduplicate features and capture them once.
+24. **Currency and Pricing**: Monetary values or pricing mentioned should be ignored.
+25. **User or Expert Testimonials**: Testimonials and expert opinions should be ignored.
+
+**Note**: Examples are solely for reference purposes and should not influence the generated output.
 
 **Examples**:
-- For a feature like "5G Speed," the output could be: `{"Connectivity": "5G Speed"}`
-- For "Super Retina XDR display, OLED," the output might be: `{"Display Technology": "Super Retina XDR display, OLED"}`
+- For a feature like "5G Speed," the output could be: `{{"Connectivity": "5G Speed"}}`
+- For "Super Retina XDR display, OLED," the output might be: `{{"Display Technology": "Super Retina XDR display, OLED"}}`
+
