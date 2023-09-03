@@ -1,0 +1,6 @@
+
+"Given the specific product name '[PRODUCT_NAME]' in English, what is its generic industry name which can be up to three words?"
+
+Mock Example:
+Input: "Given the specific product name 'Doritos' in English, what is its generic industry name which can be up to three words?"
+Output: "Tortilla chips"
