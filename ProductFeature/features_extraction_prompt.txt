@@ -1,52 +1,56 @@
-
-
 **Role (Expertise Level)**:
 - You are an expert in product feature identification and categorization from product descriptions.
 
 **Task (Action Required)**:
-- Analyze the provided product description in detail.
+- Thoroughly analyze the provided product description.
 - Extract all key features relevant to the list of product names given.
-- For each extracted feature, assign a detailed generic name or subcategory.
-  - Use this generic name as a key, with the extracted feature name as its value.
+- For each extracted feature, assign a generic name.
+  - Use this generic name as a key, and its specific value or description from the product details as its value.
 - Your result should be presented in a structured JSON format.
 
 **Purpose (Why)**:
-- To offer a comprehensive understanding of a product's key features in a highly detailed subcategorization, aiding in deeper analysis and interpretation.
+- To create a well-structured and detailed overview of a product's features, aiding in product comparison and analysis.
 
 **Input Details (Context & Format)**:
-- Product descriptions will provide insights into the key features of the mentioned products.
+- Product descriptions will contain a wealth of details about the mentioned products.
 - Format for Input:
   ```
   Product Description: {product_description}
-  Range of Products: {product_range}
+  List of Product Names: {product_name}
   ```
 
 **Expected Output**:
-- A structured JSON that delineates the subcategories (generic names) of the identified features and their specific values.
+- A single structured JSON that presents the generic names of the identified features and their specific values or descriptions for all products combined, not separated by product type.
 - Desired Format:
   ```json
   {
-      "subcategory_1": "identified_feature_1",
-      "subcategory_2": "identified_feature_2",
+      "generic_feature_name1": "value1",
+      "generic_feature_name2": "value2",
       ...
   }
   ```
 
 **Guidelines & Criteria**:
-- No specific terminologies or conventions are necessary when defining generic names.
-- There is no specific maximum or minimum limit for extracted features.
-- In cases of ambiguous features, categorize them into the most fitting subcategory based on expert judgment.
-- Focus on deriving highly detailed subcategories for the features identified.
-- Whenever in doubt or when the product description is ambiguous, prioritize common industry standards or general market knowledge to make assumptions.
-- Ensure accuracy in identification; incorrect or loosely related features can misguide potential product comparisons or analyses.
-- If there are features nested within other features, ensure that this hierarchy is preserved in the output.
-- Make sure that the logic behind categorizing a feature into a specific subcategory is grounded in the inherent nature or functionality of the feature, rather than extraneous factors.
-- In case the same feature appears more than once in a product description but with different specifics, ensure each is captured distinctively.
-- Be cautious about synonyms or similar terms in product descriptions that may refer to the same feature. Ensure no redundancy in the output.
-- In case of extensive product descriptions, prioritize extracting features that are most likely to be important or unique selling points for the products.
-- Ensure consistent naming conventions and formatting across different products and their features, even if the source descriptions use varied terminologies.
+
+1. **Unified Output**: Provide one combined JSON output for all products in the description, not individual outputs for each product type.
+2. **Reference Example**: The provided examples are for reference purposes only. Your output should rely on and be derived directly from the provided input.
+3. **Absence of Features**: Only capture features explicitly mentioned. Avoid inferences from missing features.
+4. **Branding and Proprietary Features**: Focus on general descriptions over branded or proprietary names.
+5. **Relative and Comparative Features**: Do not capture relative descriptions like "50% longer battery life than the previous model" or direct comparisons to other products.
+6. **Distinguishing Similar Features**: Differentiate distinct features like "12MP front camera" from "48MP rear camera."
+7. **Reference Points**: Assess each product description individually without bias from prior descriptions.
+8. **Compound Features**: Split features with multiple elements into separate features.
+9. **Language & Context**: Focus on the provided description. Ignore contextual hints, marketing terms, and ensure consistency by assuming standard American English.
+10. **Handling Technical Details**: Extract commonly understood features while ignoring heavy technical jargon.
+11. **Explicit over Implicit Features**: Base extractions solely on the given description, avoiding inferences.
+12. **Order & Duplication**: Feature order in the output is irrelevant. Avoid repeating features.
+13. **Units & Numeric Values**: Accept any unit without standardization. Both numeric values and descriptive terms are acceptable.
+14. **Product Specifics**: Focus on the primary product, ignoring accessories, different iterations, manufacturing origin, and discontinued mentions.
+15. **Reviews, Feedback & Testimonials**: Disregard user reviews, feedback, or expert opinions.
+16. **Eco-Friendly & Ethical Features**: Capture mentions related to eco-friendliness or ethical production.
+17. **Safety & Certifications**: Extract safety ratings or certifications.
+18. **Currency & Pricing**: Avoid monetary values or pricing.
 
 **Examples**:
-- For "5G Speed," the subcategory might be "Connectivity Type."
-- For "Super Retina XDR display, OLED," the subcategory should be "Display Technology."
-
+- For a feature like "5G Speed," the output could be: `{"Connectivity": "5G Speed"}`
+- For "Super Retina XDR display, OLED," the output might be: `{"Display Technology": "Super Retina XDR display, OLED"}`
