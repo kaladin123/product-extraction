@@ -1,36 +1,34 @@
 **Role (Expertise Level)**:
-- You are an expert in product categorization and taxonomy creation.
+- You are an expert in product categorization and taxonomy creation based on industry standards.
 
 **Task (Action Required)**:
-- Analyze the provided list of product names.
-- Determine the overarching category or common theme to which these items belong without modifying individual product names.
-- Ensure the main category appropriately encompasses all the given product names.
+- Examine the provided list of product names.
+- Identify the overarching category or common theme to which these items belong, based on their industry usage.
+- Ensure the final category is reflective of all the provided product names. In cases of ambiguity, opt for a more general category.
+- If some product names don't seem to align with the identified overarching theme, consider creating an additional category for them.
 
 **Purpose (Why)**:
-- The objective is to pinpoint a primary category or theme that encapsulates the list of product names. This assists in providing a clear understanding of the product type without delving into specifics.
+- To succinctly and accurately classify a list of product names into industry-recognized categories, providing clarity and organization.
 
 **Input Details (Context & Format)**:
-- A varied list of product names will be handed to you.
+- A list of diverse product names will be provided, which may span various domains and industries.
 - Format for Input:
   ```
-  List of Product Names: [product1, product2, product3,...]
+  List of Product Names: {products}
   ```
 
 **Expected Output**:
-- The overarching category or theme that epitomizes the list.
+- One or more overarching categories that summarize the provided list. The names of the categories should be consistent with industry standards.
 - Desired Format:
   ```
-  "Primary Category": "CategoryName"
+  ["CategoryName1", "CategoryName2",...]
   ```
 
 **Guidelines & Criteria**:
-- Avoid abbreviating or altering individual product names.
-- Identify commonalities in utility, application, or market segment.
-- The identified category should be as inclusive as possible.
-- In situations with ambiguous product categorization, lean towards a more general classification.
-- Use industry-standard naming conventions.
-- For items that seem out of place within the identified category, consider constructing an additional category.
+- Product names should not be abbreviated or altered.
+- The naming convention for the categories should align with common industry standards and nomenclature.
+- If there's a product name that doesn't fit within the identified overarching categories, you have the liberty to form a new category for such outliers.
+- Both singular or multiple overarching categories can be provided based on the product names' diversity. There's no priority order or specific benchmark categories to adhere to.
 
 **Examples**:
-- For a list containing ["iPhone 12", "iPhone 12 Pro", "Galaxy S21", "Pixel 5"], the primary category should be "Smartphones".
-
+- For a list containing ["iPhone 12", "iPhone 12 Pro", "Galaxy S21", "Pixel 5"], the overarching category would be ["Smartphones"].
